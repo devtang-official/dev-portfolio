@@ -2,6 +2,7 @@
   "name": "김태형",
   "title": "macOS Application Developer",
   "bio": "원격제어 솔루션 전문 기업에서 3년간 3개 제품을 동시 개발하며, 멀티프로세스 아키텍처 기반 네이티브 애플리케이션을 개발하고 있습니다.",
+  "profileImage": "https://lh3.googleusercontent.com/a/ACg8ocLTPg85a2nN73zOSFNO5ct0MrRbbb1vcMPOqN_2L8jGLuzJHSKP=s400-c",
   "mbti": "INTJ",
   "email": "devtaehyeong@gmail.com",
   "github": "https://github.com/devtang-official",
@@ -86,7 +87,7 @@
     },
     {
       "title": "선제적 대응",
-      "description": "macOS 신규 버전(Ventura, Sonoma, Sequoia) 조기 대응 및 이슈 해결"
+      "description": "macOS 신규 버전(Ventura, Sonoma, Sequoia, Tahoe) 조기 대응 및 이슈 해결"
     },
     {
       "title": "리더십",

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import Button from '../atoms/Button';
 import { Github, Mail, BookOpen, Briefcase } from 'lucide-react';
 
@@ -8,6 +9,7 @@ interface HeroProps {
   name: string;
   title: string;
   bio: string;
+  profileImage?: string;
   github?: string;
   blog?: string;
   email?: string;
@@ -15,7 +17,7 @@ interface HeroProps {
   experience?: string;
 }
 
-export default function Hero({ name, title, bio, github, blog, email, company, experience }: HeroProps) {
+export default function Hero({ name, title, bio, profileImage, github, blog, email, company, experience }: HeroProps) {
   const [displayedText, setDisplayedText] = useState('');
   const fullText = title;
 
@@ -36,30 +38,45 @@ export default function Hero({ name, title, bio, github, blog, email, company, e
   return (
     <section className="min-h-screen flex items-center justify-center px-6">
       <div className="max-w-4xl w-full">
-        <h1 className="text-6xl md:text-8xl font-bold text-white mb-4">
-          {name}
-        </h1>
-        <h2 className="text-2xl md:text-3xl text-cyan-400 mb-4 font-mono h-10">
-          {displayedText}
-          <span className="animate-pulse">|</span>
-        </h2>
+        <div className="flex flex-col md:flex-row items-center gap-8 mb-8">
+          {profileImage && (
+            <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-cyan-500 shadow-lg shadow-cyan-500/50">
+              <Image
+                src={profileImage}
+                alt={name}
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+          )}
+          <div className="flex-1 text-center md:text-left">
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-4">
+              {name}
+            </h1>
+            <h2 className="text-2xl md:text-3xl text-cyan-400 mb-4 font-mono">
+              {displayedText}
+              <span className="animate-pulse">|</span>
+            </h2>
 
-        {(company || experience) && (
-          <div className="flex flex-wrap gap-4 mb-6">
-            {company && (
-              <div className="flex items-center gap-2 text-zinc-300">
-                <Briefcase size={20} className="text-cyan-400" />
-                <span>{company}</span>
-              </div>
-            )}
-            {experience && (
-              <div className="text-zinc-400">
-                <span>•</span>
-                <span className="ml-2">{experience}</span>
+            {(company || experience) && (
+              <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+                {company && (
+                  <div className="flex items-center gap-2 text-zinc-300">
+                    <Briefcase size={20} className="text-cyan-400" />
+                    <span>{company}</span>
+                  </div>
+                )}
+                {experience && (
+                  <div className="text-zinc-400">
+                    <span>•</span>
+                    <span className="ml-2">{experience}</span>
+                  </div>
+                )}
               </div>
             )}
           </div>
-        )}
+        </div>
 
         <p className="text-xl text-zinc-400 mb-8 max-w-2xl">
           {bio}

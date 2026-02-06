@@ -11,6 +11,7 @@ export default function Home() {
         name={profileData.name}
         title={profileData.title}
         bio={profileData.bio}
+        profileImage={profileData.profileImage}
         github={profileData.github}
         blog={profileData.blog}
         email={profileData.email}
