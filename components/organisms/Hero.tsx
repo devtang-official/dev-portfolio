@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import Button from '../atoms/Button';
 import { Github, Mail, BookOpen, Briefcase } from 'lucide-react';
 
 interface HeroProps {
@@ -116,10 +115,6 @@ export default function Hero({ name, title, bio, profileImage, github, blog, ema
           )}
         </div>
 
-        <div className="flex gap-4">
-          <Button variant="primary">프로젝트 보기</Button>
-          <Button variant="ghost">연락하기</Button>
-        </div>
       </div>
     </section>
   );

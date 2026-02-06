@@ -20,7 +20,8 @@
       "Bash(find:*)",
       "WebSearch",
       "Bash(gh:*)",
-      "Bash(git remote add:*)"
+      "Bash(git remote add:*)",
+      "Bash(vercel --version:*)"
     ],
     "deny": [
       "Bash(rm -rf node_modules:*)",

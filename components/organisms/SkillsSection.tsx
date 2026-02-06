@@ -2,7 +2,6 @@ import SkillCard from '../molecules/SkillCard';
 
 interface Skill {
   name: string;
-  level: number;
   category: string;
 }
 
@@ -26,14 +25,13 @@ export default function SkillsSection({ skills }: SkillsSectionProps) {
         {categories.map((category) => (
           <div key={category} className="mb-8">
             <h3 className="text-xl font-semibold text-cyan-400 mb-4">{category}</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="flex flex-wrap gap-3">
               {skills
                 .filter(skill => skill.category === category)
                 .map((skill, index) => (
                   <SkillCard
                     key={index}
                     name={skill.name}
-                    level={skill.level}
                     category={skill.category}
                   />
                 ))}
