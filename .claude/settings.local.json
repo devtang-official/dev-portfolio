@@ -1,17 +1,4 @@
 {
-  "hooks": {
-    "PostToolUse": [
-      {
-        "matcher": "Write|Edit",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "npm run lint || true"
-          }
-        ]
-      }
-    ]
-  },
   "permissions": {
     "allow": [
       "Bash(npm run:*)",
@@ -28,12 +15,28 @@
       "Bash(git diff:*)",
       "Bash(curl:*)",
       "Bash(ls:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nfeat: Claude Code 표준 설정 추가\n\n- CLAUDE.md 생성 \\(개발 워크플로우, 코딩 컨벤션\\)\n- Commands 추가 \\(typecheck, lint-fix, build-check 등 5개\\)\n- Agents 추가 \\(build-validator, code-reviewer 등 4개\\)\n- settings.local.json 업데이트 \\(hooks, permissions\\)\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(find:*)",
+      "WebSearch"
     ],
     "deny": [
       "Bash(rm -rf node_modules:*)",
       "Bash(rm -rf .next:*)"
     ],
     "ask": []
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npm run lint || true"
+          }
+        ]
+      }
+    ]
   }
 }

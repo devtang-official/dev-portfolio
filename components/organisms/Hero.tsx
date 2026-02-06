@@ -2,18 +2,20 @@
 
 import { useEffect, useState } from 'react';
 import Button from '../atoms/Button';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Mail, BookOpen, Briefcase } from 'lucide-react';
 
 interface HeroProps {
   name: string;
   title: string;
   bio: string;
   github?: string;
-  linkedin?: string;
+  blog?: string;
   email?: string;
+  company?: string;
+  experience?: string;
 }
 
-export default function Hero({ name, title, bio, github, linkedin, email }: HeroProps) {
+export default function Hero({ name, title, bio, github, blog, email, company, experience }: HeroProps) {
   const [displayedText, setDisplayedText] = useState('');
   const fullText = title;
 
@@ -37,10 +39,28 @@ export default function Hero({ name, title, bio, github, linkedin, email }: Hero
         <h1 className="text-6xl md:text-8xl font-bold text-white mb-4">
           {name}
         </h1>
-        <h2 className="text-2xl md:text-3xl text-cyan-400 mb-6 font-mono h-10">
+        <h2 className="text-2xl md:text-3xl text-cyan-400 mb-4 font-mono h-10">
           {displayedText}
           <span className="animate-pulse">|</span>
         </h2>
+
+        {(company || experience) && (
+          <div className="flex flex-wrap gap-4 mb-6">
+            {company && (
+              <div className="flex items-center gap-2 text-zinc-300">
+                <Briefcase size={20} className="text-cyan-400" />
+                <span>{company}</span>
+              </div>
+            )}
+            {experience && (
+              <div className="text-zinc-400">
+                <span>•</span>
+                <span className="ml-2">{experience}</span>
+              </div>
+            )}
+          </div>
+        )}
+
         <p className="text-xl text-zinc-400 mb-8 max-w-2xl">
           {bio}
         </p>
@@ -52,24 +72,27 @@ export default function Hero({ name, title, bio, github, linkedin, email }: Hero
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 bg-zinc-900 hover:bg-zinc-800 text-white rounded-lg border border-zinc-800 hover:border-cyan-500 transition-all"
+              title="GitHub"
             >
               <Github size={24} />
             </a>
           )}
-          {linkedin && (
+          {blog && (
             <a
-              href={linkedin}
+              href={blog}
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 bg-zinc-900 hover:bg-zinc-800 text-white rounded-lg border border-zinc-800 hover:border-cyan-500 transition-all"
+              title="Blog"
             >
-              <Linkedin size={24} />
+              <BookOpen size={24} />
             </a>
           )}
           {email && (
             <a
               href={`mailto:${email}`}
               className="p-3 bg-zinc-900 hover:bg-zinc-800 text-white rounded-lg border border-zinc-800 hover:border-cyan-500 transition-all"
+              title="Email"
             >
               <Mail size={24} />
             </a>
